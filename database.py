@@ -137,7 +137,7 @@ def update_streak(db,  habit_name, streak, completion_time):
     db.commit()
 
 
-def update_periodicity(db, new_periodicity, habit_name):
+def update_periodicity(db, habit_name, new_periodicity):
     """
     Updates the periodicity of a habit and resets completion time and streak count.
     :param db: Database connection object
@@ -195,6 +195,12 @@ def fetch_habit_periodicity(db, habit_name):
 
 
 def get_periodicity(db, periodicity):
+    """
+    Retrieves all habits of the specified periodicity from the database.
+    :param db: Database connection object
+    :param periodicity: Periodicity value (e.g., daily, weekly, monthly)
+    :return: List of habits with the specified periodicity
+    """
     c = db.cursor()
     query = "SELECT * FROM habit WHERE periodicity = ?"
     c.execute(query, (periodicity,))
@@ -203,6 +209,12 @@ def get_periodicity(db, periodicity):
 
 
 def get_streak_count(db, habit_name):
+    """
+    Retrieves the streak count of a habit from the database.
+    :param db: Database connection object
+    :param habit_name: Name of the habit
+    :return: Streak count of the habit
+    """
     c = db.cursor()
     query = "SELECT streak FROM habit WHERE name= ?"
     c.execute(query, (habit_name,))
@@ -214,6 +226,12 @@ def get_streak_count(db, habit_name):
 
 
 def fetch_last_completed(db, habit_name):
+    """
+    Retrieves the completion time of the last checkoff for a specific habit from the database.
+    :param db: Database connection object
+    :param habit_name: Name of the habit
+    :return: The completion time of the last checkoff, or None if no checkoffs found
+    """
     c = db.cursor()
     query = "SELECT completion_time FROM habit WHERE name = ?"
     c.execute(query, (habit_name,))
@@ -260,12 +278,23 @@ def fetch_last_completed_month(db, habit_name):
 
 
 def get_longest_habit_streak(db, habit_name):
+    """
+    Retrieves the longest streak for a specific habit from the database.
+    :param db: Database connection object
+    :param habit_name: Name of the habit
+    :return: List containing the longest streak value
+        """
     c = db.cursor()
     c.execute("SELECT MAX(streak) FROM habit_checks WHERE name=? ")
     return c.fetchall()
 
 
 def get_all_habits(db):
+    """
+    Retrieves all habits from the database.
+    :param db: Database connection object
+    :return: List of all habits
+    """
     c = db.cursor()
     c.execute("SELECT * FROM habit")
     data = c.fetchall()
@@ -273,6 +302,12 @@ def get_all_habits(db):
 
 
 def get_habit_checkoffs(db, habit_name):
+    """
+    Retrieves all checkoffs for a specific habit from the database.
+    :param db: Database connection object
+    :param habit_name: Name of the habit
+    :return: List of all checkoffs for the specified habit
+    """
     c = db.cursor()
     c.execute("SELECT * FROM habit WHERE name=?", (habit_name,))
     return c.fetchall()

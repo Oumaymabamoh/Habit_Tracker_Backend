@@ -1,6 +1,8 @@
 import database as db
 from datetime import datetime
 
+import get
+
 
 class Habit:
     # Create a Habit object with specified attributes
@@ -39,16 +41,8 @@ class Habit:
 
     # Update the habit periodicity and update the habit checks
     def update_periodicity(self):
-        #if self.periodicity is not None:
-        # Fetch the updated periodicity from the database
         db.update_periodicity(self.db, self.name, self.periodicity)
-        db.checkoff_habit(self.db, self.name, False, 0, self.current_time)
-            # Update the habit's periodicity attribute
-            #print(f"\nSuccessfully changed the periodicity of the habit '{self.name.capitalize()}' to "
-                  #f"'{self.periodicity.capitalize()}'\n")
-        # Optionally, you can include an informative message if the habit's periodicity is already None
-       # else:
-            #print("The habit's periodicity is None. Please set a valid periodicity first.")
+        #db.checkoff_habit(self.db, self.name, False, 0, self.current_time)
 
     # Get the current habit streak from the db and increases it by 1
     def increment(self):
@@ -66,6 +60,7 @@ class Habit:
         self.completion_time = None
         db.update_streak(self.db, self.name, self.streak, self.completion_time)
 
+    #
     def checked_off_habit(self):
         if not db.habit_exists(self.db, self.name):  # Check if habit exists
             print(f"\n {self.name.capitalize()} habit not found. \n")

@@ -85,10 +85,10 @@ class TestHabit(unittest.TestCase):
         # Check off the habit again after a month
         self.habit.checked_off_habit()
         self.habit.increment()
-        
-    def tearDown(self):
-        #Delete the test database
-        os.remove("test.db")
+
+    # def tearDown(self):
+    # Delete the test database
+    # os.remove("test.db")
 
 
 if __name__ == '__main__':

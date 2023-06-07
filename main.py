@@ -13,9 +13,8 @@ print("*** Welcome to the {} ***".format("Habit Tracker app"))
 # Command-line interface
 def cli():
     """
-    using the command line interface in order to interact with the user.
-
-   """
+   using the command line interface in order to interact with the user.
+    """
 
 
 # Connect to the database by calling the connect function
@@ -96,7 +95,6 @@ while not stop:
         # Code to check off a habit goes here
         try:
             habit_name = get.habits_from_db(db)
-
             habit = Habit(habit_name)
             habit.checked_off_habit()
         except (ValueError, TypeError, AttributeError) as e:

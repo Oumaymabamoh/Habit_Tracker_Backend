@@ -3,6 +3,11 @@ from database import *
 
 # return a list of all tracked habits
 def habits_list(db):
+    """
+    Gets the list of all tracked habits from the database and displays them in a formatted table.
+    :param db: Database connection object
+    :return: None
+    """
     habits = get_all_habits(db)
     if not habits:
         print("No habits found.")
@@ -29,9 +34,9 @@ def habits_list(db):
 def habits_by_period(db, periodicity):
     """
     Gets the list of all habits of the specified periodicity.
-    param db: To maintain connection with the database
-    param periodicity: To get list of specified periodicity habits
-    return: list of all specified periodicity habits
+    :param db: To maintain connection with the database
+    :param periodicity: To get list of specified periodicity habits
+    :return: list of all specified periodicity habits
     """
     habits = get_periodicity(db, periodicity)
     # Uses string formatting to set columns and rows for the table
@@ -51,8 +56,8 @@ def habits_by_period(db, periodicity):
 def longest_streak_all_habits(db):
     """
     Calculates the longest streak among all habits.
-    param db: To maintain connection with the database
-    return: The longest streak value
+    :param db: To maintain connection with the database
+    :return: The longest streak value
     """
     habits = get_all_habits(db)
     longest_streak = 0
@@ -69,9 +74,9 @@ def longest_streak_all_habits(db):
 def habit_longest_streak(db, habit_name):
     """
     Retrieves the longest streak for a given habit.
-    param db: To maintain connection with the database
-    param habit_name: The name of the habit
-    return: The longest streak value
+    :param db: To maintain connection with the database
+    :param habit_name: The name of the habit
+    :return: The longest streak value
     """
     try:
         c = db.cursor()
