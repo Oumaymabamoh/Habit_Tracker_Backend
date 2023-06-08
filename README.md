@@ -83,19 +83,7 @@ After executing the tests, the test results will be displayed in the terminal or
 Note: Make sure you have Python installed on your machine.
 
 # Contribution
-This is my first Python project, and I welcome your comments, suggestions, and contributions. Whether you have ideas to improve the code, find bugs, or have feature requests, please feel free to contribute by following these steps:
+This is my first Python project, and I welcome your contributions to help improve the Habit Tracker. Your comments, suggestions, bug reports, and feature requests are valuable in enhancing the project. Feel free to open an issue on the repository to report bugs or request new features. Thank you!
 
-1. Fork the repository on GitHub.
-2. Clone your forked repository to your local machine.
-3. Create a new branch for your feature, bug fix, or enhancement.
-4. Make the necessary changes and additions in your branch.
-5. Test your changes thoroughly.
-6. Commit your changes and push them to your forked repository.
-7. Submit a pull request to the main repository.
 
-When submitting a pull request, please provide a clear and descriptive explanation of the changes you made.
-Additionally, if you encounter any bugs or have feature requests, create an issue on the repository and provide as much detail as possible.
-
-Your contributions will be greatly appreciated as they help improve the Habit Tracker project and make it better for everyone. Thank you!
-
-Happy habit tracking!
+**Happy habit tracking!**
