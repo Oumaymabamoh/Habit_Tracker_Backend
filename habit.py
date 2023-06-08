@@ -42,7 +42,7 @@ class Habit:
     # Update the habit periodicity and update the habit checks
     def update_periodicity(self):
         db.update_periodicity(self.db, self.name, self.periodicity)
-        #db.checkoff_habit(self.db, self.name, False, 0, self.current_time)
+        db.checkoff_habit(self.db, self.name, False, 0, self.current_time)
 
     # Get the current habit streak from the db and increases it by 1
     def increment(self):

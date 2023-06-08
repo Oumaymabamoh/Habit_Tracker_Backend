@@ -2,14 +2,24 @@ import unittest
 from habit import Habit
 import database as db
 from datetime import datetime, timedelta
-import os
 from freezegun import freeze_time
+import os
 
 
 class TestHabit(unittest.TestCase):
+    # Add the required weeks of predefined habit data (ideally as data used in tests)
+    predefined_habit_data = [
+        {"name": "cooking", "category": "health", "periodicity": "daily"},
+        {"name": "walk", "category": "health", "periodicity": "daily"},
+        {"name": "cleaning", "category": "life", "periodicity": "weekly"},
+        {"name": "swim", "category": "fun", "periodicity": "weekly"},
+        {"name": "drawing", "category": "fun", "periodicity": "monthly"},
+        # Add more predefined habit data as needed
+    ]
+
     def setUp(self):
         # Initialize a habit object for testing
-        self.habit = Habit("grocery", "life", "daily", "test.db")
+        self.habit = Habit("grocery", "life", "Daily", "test.db")
         self.db = db.connect("test.db")
         self.habit.current_time = datetime.now().strftime("%m/%d/%Y %H:%M")
 
@@ -31,10 +41,12 @@ class TestHabit(unittest.TestCase):
 
     def test_update_periodicity(self):
         # Update the periodicity of a habit and check if it was updated in the database
-        self.habit.periodicity = "weekly"
+        self.habit = Habit("grocery", "life", "Daily", "test.db")
+        self.habit.add()
+        self.habit.periodicity = "Weekly"
         self.habit.update_periodicity()
         periodicity = db.fetch_habit_periodicity(self.habit.db, self.habit.name)
-        self.assertEqual(periodicity, "weekly")
+        self.assertEqual(periodicity, "Weekly")
 
     def test_increment(self):
         # Increment the streak and check if it was updated in the habit object
@@ -66,7 +78,6 @@ class TestHabit(unittest.TestCase):
 
     def test_checkoff_weekly_habit(self):
         # First checkoff
-        self.habit.reset()
         self.habit.checked_off_habit()
         self.habit.increment()
 
@@ -86,9 +97,9 @@ class TestHabit(unittest.TestCase):
         self.habit.checked_off_habit()
         self.habit.increment()
 
-    # def tearDown(self):
-    # Delete the test database
-    # os.remove("test.db")
+    def tearDown(self):
+        # Delete the test database
+        os.remove("test.db")
 
 
 if __name__ == '__main__':
