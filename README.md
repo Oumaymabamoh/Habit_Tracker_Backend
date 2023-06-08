@@ -1,7 +1,7 @@
 # Habit_Tracker_Backend
 # Description 
 Habit Tracker backend is a command line interface application designed to help users track their habits and establish a routine for positive behavior. It provides a simple and efficient way to monitor, set goals and track progress in achieving them.
-With the Habit Tracker,users can easily create and manage a list of habits they want to cultivate. They can define the periodicity of each habit, whether it's daily, weekly, or monthly. The application allows users to mark habits as completed, providing a sense of accomplishment and motivation.Additionally,the Habit Tracker provides analytics to give users insights into their habit tracking progress.
+With the Habit Tracker, users can easily create and manage a list of habits they want to cultivate.They can define the periodicity of each habit, whether it's daily, weekly or monthly.The application allows users to mark habits as completed, providing a sense of accomplishment and motivation.Additionally, the Habit Tracker provides analytics to give users insights into their habit tracking progress.
 
 This programm is a part of the IU university OOFPP course. 
 
@@ -39,10 +39,18 @@ This will launch the program in interactive mode and help avoid the warning mess
 # Usage
 The Habit Tracker CLI provides the following options:
 1. Add Habit: Allows you to add a new habit to track. You can specify the name, category and periodicity (daily, weekly or monthly) .
-2. Manage Habit: 
-3. Mark Habit as Complete: Allows you to mark a habit as completed .
+2. Manage Habit:
+   - Delete Habit: Choose this option to delete a habit from your habit list.You will be prompted to select the habit you want to delete.
+   - Delete Category: Choose this option to delete a category from your category list. You will be prompted to select the category you want to delete.
+   - Update Habit: Select this option to update the periodicity of a habit. You can change the habit's periodicity to daily, weekly, or monthly.
+3. Check Off habit: Allows you to mark a habit as completed .
 5. View Analytics: Choose this option to see the analytics and insights related to your habits.
-4. Exit: Exits the Habit Tracker app.
+   - All your current habits with their details.
+   - All habits with a same time-period
+   - The longest streak you have out of all your current habits. 
+   - The longest streak you've had for a specific habit
+7. Exit: Exits the Habit Tracker app.
+
 Follow the prompts and instructions provided by the CLI to navigate through the options and manage your habits efficiently.
 
 # Running Tests
